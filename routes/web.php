@@ -21,12 +21,16 @@ Route::get('/', function () {
 // Route::group(['middleware' => ['admin']], function () {
 //     Route::get('admin-home', [\App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
 //  });
-
 Auth::routes();
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin_dashboard', '\App\Http\Controllers\Admin\DashboardController@index');
+    Route::resource('users', '\App\Http\Controllers\UserController');
+    Route::resource('salons', '\App\Http\Controllers\SalonController');
+    Route::resource('stocks', '\App\Http\Controllers\StockController');
 });
 Route::group(['middleware' => ['user']], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/general_dashboard', '\App\Http\Controllers\General\DashboardController@index');
 });

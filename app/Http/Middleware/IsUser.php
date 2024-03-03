@@ -15,12 +15,12 @@ class IsUser
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         if (Auth::user() &&  Auth::user()->role == "User") {
-            return $next($request);
-       }
+             return $next($request);
+        }
 
-       return redirect('home')->with('error','You have not user access');
+        return redirect('/')->with('error','You have not admin access');
     }
 }

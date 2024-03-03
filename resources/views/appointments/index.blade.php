@@ -33,15 +33,20 @@
                                     <td class="text-muted">{{ $appointments->date }}</td>
                                     <td class="text-muted">{{ $appointments->salon->name }}</td>
                                     <td>
-                                        <a href="{{ route('appointments.show', $appointments->id) }}"><span
-                                                class="btn btn-sm btn-rounded btn-success">View</span></a>
-                                        <form style="display:inline-block" method="POST"
-                                            action="{{ route('appointments.destroy', $appointments->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-rounded"
-                                                style="background-color: #7B014C">Delete</button>
-                                        </form>
+                                        <div class="row">
+
+                                            <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20You%20can%20come%20through."
+                                                target="_blank">
+                                                <p><span class="text-secondary">Accept
+                                                </p>
+                                            </a>
+                                            <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20declined.%20Please%20contact%20Alvion%20on%20+263780854288%20.%20Thank%20you."
+                                                target="_blank">
+                                                <p><span class="text-danger">Decline
+                                                </p>
+                                            </a>
+
+                                        </div>
 
                                     </td>
                                 </tr>

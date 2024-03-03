@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Models\Salon;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $salons = Salon::all();
+    $users = User::where('role', 'User')->get();
+    return view('welcome', compact('salons', 'users'));
 });
 // Route::group(['middleware' => ['admin']], function () {
 //     Route::get('admin-home', [\App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
 //  });
+Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
 Auth::routes();
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -30,7 +35,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('users', '\App\Http\Controllers\UserController');
     Route::resource('salons', '\App\Http\Controllers\SalonController');
     Route::resource('stocks', '\App\Http\Controllers\StockController');
+    // Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
+
 });
 Route::group(['middleware' => ['user']], function () {
     Route::get('/general_dashboard', '\App\Http\Controllers\General\DashboardController@index');
+    Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
+
 });

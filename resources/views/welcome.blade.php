@@ -42,14 +42,127 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __('About Us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Contact Us') }}</a>
+                        <a class="nav-link" href="{{ route('appointments.store') }}">{{ __('Contact Us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light btn-rounded" href="{{ route('login') }}" style="background-color: #7B014C;">{{ __('Book An Appointment') }}</a>
+                        <button type="button" class="btn text-light" data-toggle="modal" data-target="#exampleModal"
+                            style="background-color: #7B014C">
+                            Book Appointment
+                        </button>
                     </li>
                 </ul>
 
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-between">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Book an appointment</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    class="text-dark">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div><br />
+                                @endif
 
+                                <form action="{{ route('appointments.store') }}" method="POST">
+                                    @csrf
+
+                                    <div class="row m-1">
+                                        <div class="col">
+                                            <input type="text" name="name" placeholder="Name"
+                                                class="form-control" required>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row m-1">
+                                        <div class="col">
+                                            <input type="text" name="surname" placeholder="Last Name"
+                                                class="form-control" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group m-3">
+
+                                        <input type="email" name="email" placeholder="Email address"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="form-group m-3">
+                                        <input type="text" name="phone_number" placeholder="Enter your phone number"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="form-group m-3">
+                                        <input type="date" name="date" placeholder="Pick date"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="row m-1">
+
+                                        <div class="col-md-12">
+                                            <select name="time" class="form-control form-control-line"
+                                            required>
+                                            <option selected style="display:none">Select Prefered Time</option>
+
+                                                <option value="08:00 - 09:00">8 am to 9 am
+                                                </option>
+                                                <option value="10:00 - 11:00">10 am to 11 am
+                                                </option>
+                                                <option value="12:00 - 13:00">12 pm to 13 pm
+                                                </option>
+                                                <option value="14:00 - 15:00">14 pm to 15 pm
+                                                </option>
+                                                <option value="16:00 - 17:00">16 pm to 17 pm
+                                                </option>
+
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="row m-1">
+
+                                        <div class="col-md-12">
+                                            <select name="salon_id" class="form-control form-control-line"
+                                            required>
+                                            <option selected style="display:none">Select Salon</option>
+                                            @foreach ($salons as $salon)
+                                                <option value="{{ $salon->id }}">{{ $salon->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="row m-1">
+
+                                        <div class="col-md-12">
+                                            <select name="user_id" class="form-control form-control-line"
+                                            required>
+                                            <option selected style="display:none">Select Hair dresser</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                    </div>
+
+                                    <p class="terms m-3" style="color: #7B014C">By clicking 'Submit' you agree to
+                                        the <a href="#" class="text-secondary">Terms
+                                            &amp; Conditions</a>.</p>
+                                    <button type="submit" class="btn btn-block text-center text-light w-100" style="background-color:#7B014C"> Book Now</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
@@ -66,9 +179,10 @@
                             </li>
                         @endif
                     @else
-                    <li class="nav-item">
-                        <a class="nav-link btn" href="#" style="color: #7B014C; font-weight : bold">{{ __('Feedback') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="#"
+                                style="color: #7B014C; font-weight : bold">{{ __('Feedback') }}</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
@@ -103,41 +217,30 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('assets/img/bg1.jpg') }}" class="d-block w-100 " alt="..."
+                    <img src="{{ asset('admin/assets/img/bg01.jpg') }}" class="d-block w-100 " alt="..."
                         style="height: 550px">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3 style="color: #7B014C; font-weight : bold">Get the best hairstyle</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/bg2.jpg') }}" class="d-block w-100" alt="..."
+                    <img src="{{ asset('admin/assets/img/bg02.jpg') }}" class="d-block w-100" alt="..."
                         style="height: 550px">
-                         <div class="carousel-caption d-none d-md-block">
-                        <h3 style="color: #7B014C; font-weight : bold">We are the best at what we do</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/img/bg3.jpg') }}" class="d-block w-100" alt="..."
+                    <img src="{{ asset('admin/assets/img/bg03.jpg') }}" class="d-block w-100" alt="..."
                         style="height: 550px">
-                         <div class="carousel-caption d-none d-md-block">
-                        <h3 style="color: #7B014C; font-weight : bold">Come and relax with the best hair stylist</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+
                 </div>
             </div>
 
         </div>
     </div>
 
-    <div class="container mt-3 mb-3">
+    <div class="container mt-3 m-2">
         <div class="row pt-3 pb-3">
             <div class="col-md-12 text-center">
                 <h2>Indulge in Unforgettable Beauty Experiences at Our Exquisite Salon Oasis!</h2>
-                <p class="pt-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id deserunt numquam
-                    accusamus, exercitationem non ipsam, officia esse quo voluptate, est perspiciatis reiciendis facilis
-                    adipisci doloribus eos excepturi. Atque, quo facilis.</p>
+
             </div>
         </div>
     </div>
@@ -254,7 +357,7 @@
                         <h3 style="color: #7B014C">Testimonials</h3>
                     </div>
                     <div class="col-md-12 d-flex justify-content-center">
-                        <h2 style="color: #7B014C">Explore the students experience</h2>
+                        <h2 style="color: #7B014C">Explore the customers experience from our salon range</h2>
                     </div>
                 </div>
                 <section class="home-testimonial-bottom">
@@ -307,12 +410,25 @@
         </section>
     </div>
     <footer class="footer mt-1">
-        <div class="container" style="height: 300; background-color : #7B014C">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="p-5 m-4 text-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat eum
-                        minima odit asperiores, recusandae rem! Quasi deleniti laudantium error sed eos at esse,
-                        nesciunt aut distinctio obcaecati perspiciatis ea alias.</p>
+        <div class="container" style="height: 400; background-color : #7B014C">
+            <div class="row mt-3 ml-5 justify-content-center mb-5">
+                <div class="col-md-6 ">
+                    <h4 class="pt-5 pl-5 fw-bold" style="color: #D9D9D9">Physical Address</h4>
+                    <p class="pt-5 m-1 text-light pl-5">
+                        17138 Unit "M"
+                    </p>
+                    <p class=" m-1 text-light pl-5">
+                        Seke
+                    </p>
+                    <p class=" m-1 text-light pl-5">
+                        Chitungwiza
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="pt-5 fw-bold" style="color: #D9D9D9">Contact Details</h4>
+                    <p class="pt-5 ml-4 text-light"> Email Address : tatendamareya@gmail.com</p>
+                    <p class="m-1 text-light"> Phone Number : +263780854288</p>
+                    <p class="m-1 text-light"> Phone Number : +263780854288</p>
                 </div>
             </div>
         </div>

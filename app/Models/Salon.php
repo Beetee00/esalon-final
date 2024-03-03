@@ -19,4 +19,9 @@ class Salon extends Model
     {
         return $this->hasMany(Stock::class);
     }
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointments::class);
+    }
 }

@@ -73,6 +73,29 @@
                                 <div data-i18n="Analytics">Dashboard</div>
                             </a>
                         </li>
+                        <li class="menu-header small text-uppercase" style="background-color: #32435F"><span
+                            class="menu-header-text">Appointments
+                            Management</span></li>
+                    <!-- Forms -->
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #32435F">
+                            <i class="menu-icon tf-icons bx bx-detail"></i>
+                            <div data-i18n="Form Elements">My Appointments</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('appointments.index') }}" class="menu-link" style="color: #32435F">
+                                    <div data-i18n="All appointments">All</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('appointments.create') }}" class="menu-link" style="color: #32435F">
+                                    <div data-i18n="Add New Appointment">New</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
 
                     </ul>
                 </aside>
@@ -80,8 +103,8 @@
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
-                    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                        id="layout-navbar">
+                    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center "
+                        id="layout-navbar" style="background-color: #32435F !important">
                         <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                                 <i class="bx bx-menu bx-sm"></i>

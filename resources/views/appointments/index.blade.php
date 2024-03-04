@@ -35,8 +35,7 @@
                                     <td>
                                         <div class="row">
 
-                                            <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20You%20can%20come%20through."
-                                                target="_blank">
+                                            <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20Click%20this%20Link%20to%20make%20a%20payment%20https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPW5nb25pZHphc2hlbnlhY2hvdG8lNDBnbWFpbC5jb20mYW1vdW50PTQwMDAwLjAwJnJlZmVyZW5jZT0mbD0x">
                                                 <p><span class="text-secondary">Accept
                                                 </p>
                                             </a>

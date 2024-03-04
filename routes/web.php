@@ -22,9 +22,9 @@ Route::get('/', function () {
     $users = User::where('role', 'User')->get();
     return view('welcome', compact('salons', 'users'));
 });
-// Route::group(['middleware' => ['admin']], function () {
-//     Route::get('admin-home', [\App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
-//  });
+
+Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
 Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
 Auth::routes();
 // Route::get('/home', [HomeController::class, 'index'])->name('home');

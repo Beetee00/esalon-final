@@ -13,9 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
+
 </head>
 
 <body style="background-color: #D9D9D9">
@@ -39,10 +37,10 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('About Us') }}</a>
+                        <a class="nav-link" href="{{ route('about') }}">{{ __('About Us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('appointments.store') }}">{{ __('Contact Us') }}</a>
+                        <a class="nav-link" href="#contact">{{ __('Contact Us') }}</a>
                     </li>
                     <li class="nav-item">
                         <button type="button" class="btn text-light" data-toggle="modal" data-target="#exampleModal"

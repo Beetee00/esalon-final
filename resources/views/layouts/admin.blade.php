@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#" class="menu-link">
+                                    <a href="{{ route('users.create') }}" class="menu-link">
                                         <div data-i18n="Add new user" style="color: #7B014C">New</div>
                                     </a>
                                 </li>

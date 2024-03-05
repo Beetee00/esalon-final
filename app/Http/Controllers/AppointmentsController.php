@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
+  
+
     /**
      * Display a listing of the resource.
      *
@@ -63,7 +65,7 @@ class AppointmentsController extends Controller
             'salon_id' => $request->get('salon_id'),
             'user_id' => $request->get('user_id'),
         ]);
-        //dd($appointment);
+        dd($appointment);
         $appointment->save();
         return redirect('/')->with('status', 'Appointment submitted successfully!');
     }

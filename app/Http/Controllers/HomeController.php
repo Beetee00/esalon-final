@@ -31,8 +31,4 @@ class HomeController extends Controller
         return view('admin');
     }
 
-    public function about()
-    {
-        return view('about');
-    }
 }

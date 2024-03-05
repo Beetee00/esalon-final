@@ -22,14 +22,8 @@ Route::get('/', function () {
     $users = User::where('role', 'User')->get();
     return view('welcome', compact('salons', 'users'));
 });
-
-Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about');
-
 Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
 Auth::routes();
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin_dashboard', '\App\Http\Controllers\Admin\DashboardController@index');
     Route::resource('users', '\App\Http\Controllers\UserController');

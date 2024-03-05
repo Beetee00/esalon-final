@@ -53,7 +53,7 @@ class UserController extends Controller
             'role' => $request->get('role'),
             'password' => $pass,
         ]);
-       // dd($client);
+        //dd($client);
         $client->save();
         return redirect(route('users.index'))->with('status', 'User Added Successfully!');
     }

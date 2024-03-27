@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointments;
+use App\Models\Salon;
+use App\Models\StockRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class StockRequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        //
     }
 
     /**
@@ -27,8 +27,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        $salons = \App\Models\Salon::all();
-        return view('users.create', compact('salons'));
+        $id = Auth::user()->id;
+        $user = User::findOrFail($id);
+        $salons = Salon::all();
+        $stocks = \App\Models\Stock::all();
+        return view('stock_requests.create', compact('user', 'salons', 'stocks'));
     }
 
     /**
@@ -39,27 +42,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-           // $users = User::first();
-           $request->validate([
-            'name' => 'required',
-            'email' => '',
-            'role' => 'required',
+        $request->validate([
+            'date' => 'required',
             'salon_id' => 'required',
-            'password' => 'required',
-        ]);
+            'user' => 'required',
+            'stock_id' => 'required'
 
-        // $store = $request->all();
-        $pass =  Hash::make($request->get('password'));
-        $client = new User([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'role' => $request->get('role'),
-            'salon_id' => $request->get('salon_id'),
-            'password' => $pass,
         ]);
-        //dd($client);
-        $client->save();
-        return redirect(route('users.index'))->with('status', 'User Added Successfully!');
+        //dd($request);
+        $request_stock = new StockRequest([
+
+            'date' => $request->get('date'),
+            'salon_id' => $request->get('salon_id'),
+            'user' => $request->get('user'),
+            'stock_id' => $request->get('stock_id')
+        ]);
+       //dd($request_stock);
+        $request_stock->save();
+        return redirect('/general_dashboard')->with('status', 'Stock request submitted successfully!');
     }
 
     /**
@@ -70,9 +70,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrfail($id);
-        $appointments = Appointments::where('user_id', $id)->paginate(3);
-        return view('users.show', compact('user', 'appointments'));
+        //
     }
 
     /**

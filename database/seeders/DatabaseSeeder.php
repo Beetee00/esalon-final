@@ -14,11 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        return \App\Models\User::create([
+        $user = new \App\Models\User([
             'name' => 'Mary Mareya',
             'role' => 'Admin',
             'email' => 'tatendamarymareya@gmail.com',
+            'salon_id' => 1,
             'password' => Hash::make('00000000'),
         ]);
+        $salon = new \App\Models\Salon([
+            'name' => 'Alvion Salon',
+            'address' => 'Corner Jason Love, 123 Harare CBD',
+        ]);
+
+        //save salon first
+        $salon->save();
+        //save user then
+        $user->save();
+
     }
 }

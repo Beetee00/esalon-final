@@ -14,6 +14,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email Address</th>
+                                <th>Stationed At</th>
                                 <th>Role</th>
                                 <th>Actions</th>
                             </tr>
@@ -24,6 +25,7 @@
                                     <td class="text-muted">{{ $user->id }}</td>
                                     <td class="text-muted">{{ $user->name }}</td>
                                     <td class="text-muted">{{ $user->email }}</td>
+                                    <td class="text-muted">{{ $user->salon->name }}</td>
                                     <td class="text-muted">{{ $user->role }}</td>
                                     <td>
                                         <a href="{{ route('users.show', $user->id) }}"><span

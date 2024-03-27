@@ -24,4 +24,14 @@ class Salon extends Model
     {
         return $this->hasMany(Appointments::class);
     }
+
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function stock_requests(): HasMany
+    {
+        return $this->hasMany(StockRequest::class);
+    }
 }

@@ -68,33 +68,60 @@
                     <ul class="menu-inner py-1">
                         <!-- Dashboard -->
                         <li class="menu-item active">
-                            <a href="#" class="menu-link">
+                            <a href="{{url('/general_dashboard')}}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                                <div data-i18n="Analytics">Dashboard</div>
+                                <div data-i18n="Analytics" style="color: #32435F">Dashboard</div>
                             </a>
                         </li>
                         <li class="menu-header small text-uppercase" style="background-color: #32435F"><span
-                            class="menu-header-text">Appointments
-                            Management</span></li>
-                    <!-- Forms -->
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #32435F">
-                            <i class="menu-icon tf-icons bx bx-detail"></i>
-                            <div data-i18n="Form Elements">My Appointments</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('appointments.index') }}" class="menu-link" style="color: #32435F">
-                                    <div data-i18n="All appointments">All</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('appointments.create') }}" class="menu-link" style="color: #32435F">
-                                    <div data-i18n="Add New Appointment">New</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                                class="menu-header-text" style="color: white">Appointments
+                                Management</span></li>
+                        <!-- Forms -->
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #32435F">
+                                <i class="menu-icon tf-icons bx bx-detail"></i>
+                                <div data-i18n="Form Elements">My Appointments</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{ route('appointments.index') }}" class="menu-link"
+                                        style="color: #32435F">
+                                        <div data-i18n="All appointments">All</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('appointments.create') }}" class="menu-link"
+                                        style="color: #32435F">
+                                        <div data-i18n="Add New Appointment">New</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-header small text-uppercase" style="background-color: #32435F"><span
+                                class="menu-header-text" style="color: white">My Requests</span></li>
+                        <!-- Forms -->
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #32435F">
+                                <i class="menu-icon tf-icons bx bx-detail"></i>
+                                <div data-i18n="Form Elements">Requests</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{ route('stock_requests.index') }}" class="menu-link"
+                                        style="color: #32435F">
+                                        <div data-i18n="All appointments">All</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('stock_requests.create') }}" class="menu-link"
+                                        style="color: #32435F">
+                                        <div data-i18n="Add New Appointment">New</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
 
 
                     </ul>
@@ -121,17 +148,11 @@
                                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                     @endif
-
-                                    @if (Route::has('register'))
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li>
-                                    @endif
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                                             role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" v-pre>
+                                            aria-expanded="false" v-pre style="color: white">
                                             {{ Auth::user()->name }}
                                         </a>
 

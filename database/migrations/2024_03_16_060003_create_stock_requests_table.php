@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppointmentsTable extends Migration
+class CreateStockRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,16 @@ class CreateAppointmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('stock_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('salon_id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('email');
-            $table->string('phone_number');
-            $table->string('style');
-            $table->string('style_image');
-            $table->string('time');
+            $table->unsignedBigInteger('stock_id');
             $table->string('date');
+            $table->string('user');
             $table->timestamps();
             $table->index('salon_id');
-            $table->index('user_id');
+
+            $table->index('stock_id');
         });
     }
 
@@ -38,6 +33,6 @@ class CreateAppointmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('stock_requests');
     }
 }

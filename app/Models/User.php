@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class User extends Authenticatable
 {
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'name',
         'role',
         'email',
+        'salon_id',
         'password',
     ];
 
@@ -44,8 +47,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function appointments(): HasMany
+
+
+
+    public function salon() : BelongsTo
     {
-        return $this->hasMany(Appointments::class);
+        return $this->belongsTo(Salon::class);
     }
+
+
 }

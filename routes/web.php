@@ -29,11 +29,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('users', '\App\Http\Controllers\UserController');
     Route::resource('salons', '\App\Http\Controllers\SalonController');
     Route::resource('stocks', '\App\Http\Controllers\StockController');
-    // Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
-
 });
 Route::group(['middleware' => ['user']], function () {
     Route::get('/general_dashboard', '\App\Http\Controllers\General\DashboardController@index');
-    Route::resource('appointments', '\App\Http\Controllers\AppointmentsController');
-
+    Route::resource('stock_requests', '\App\Http\Controllers\StockRequestsController');
 });

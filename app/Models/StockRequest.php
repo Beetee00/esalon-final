@@ -5,24 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Stock extends Model
+class StockRequest extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name',
-        'type',
-        'units',
-        'salon_id'
+        'date',
+        'salon_id',
+        'user',
+        'stock_id'
+
+
     ];
+
     public function salon() : BelongsTo
     {
         return $this->belongsTo(Salon::class);
     }
 
-    public function stock_requests(): HasMany
+    public function stock() : BelongsTo
     {
-        return $this->hasMany(StockRequest::class);
+        return $this->belongsTo(Stock::class);
     }
 }

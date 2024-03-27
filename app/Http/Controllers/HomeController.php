@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StockRequest;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,8 @@ class HomeController extends Controller
 
     public function admin()
     {
-        return view('admin');
+       
+        return view('admin', compact('stock_requests'));
     }
 
 }

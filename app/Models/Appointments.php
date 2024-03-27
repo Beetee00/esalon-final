@@ -16,6 +16,8 @@ class Appointments extends Model
         'email',
         'user_id',
         'phone_number',
+        'style',
+        'style_image',
         'time',
         'date',
         'salon_id'

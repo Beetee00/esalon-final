@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
-  
-
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +19,10 @@ class AppointmentsController extends Controller
     {
         $user_id = Auth::user()->id;
         $appointments = Appointments::where('user_id', $user_id)->paginate(3);
+        $user = User::findOrFail($user_id);
+        $salons = Salon::all();
         //dd($appointments);
-        return view('appointments.index', compact('appointments'));
+        return view('appointments.index', compact('appointments', 'salons', 'user'));
     }
 
     /**
@@ -54,7 +54,10 @@ class AppointmentsController extends Controller
             'date' => 'required',
             'salon_id' => 'required',
             'user_id' => 'required',
+            'style' => 'required',
+            'style_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+        //dd($request);
         $appointment = new Appointments([
             'name' => $request->get('name'),
             'surname' => $request->get('surname'),
@@ -62,10 +65,22 @@ class AppointmentsController extends Controller
             'phone_number' => $request->get('phone_number'),
             'time' => $request->get('time'),
             'date' => $request->get('date'),
+            'style' => $request->get('style'),
             'salon_id' => $request->get('salon_id'),
             'user_id' => $request->get('user_id'),
         ]);
-        dd($appointment);
+        //
+        if ($request->hasFile('style_image')) {
+            $destination_path = public_path('images/uploads');
+            $image3 = $request->file('style_image');
+            $image_name3 = $image3->getClientOriginalName();
+            $image3->move($destination_path, $image_name3);
+            $appointment['style_image'] = $image_name3;
+        } else {
+
+        }
+       // dd($appointment);
+
         $appointment->save();
         return redirect('/')->with('status', 'Appointment submitted successfully!');
     }

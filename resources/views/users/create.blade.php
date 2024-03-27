@@ -9,6 +9,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.store') }}">
                         @csrf
+                        <div class="row mb-3">
+                            <label for="units" class="col-md-4 col-form-label text-md-start">{{ __('Salon') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="salon_id" class="form-control form-control-line"
+                                required>
+                                <option selected style="display:none">Select Salon</option>
+                                @foreach ($salons as $salon)
+                                    <option value="{{ $salon->id }}">{{ $salon->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -24,16 +38,19 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                            <label for="units" class="col-md-4 col-form-label text-md-start">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="name" autofocus>
+                                <select name="role" class="form-control form-control-line"
+                                required>
+                                <option selected style="display:none">Select Role</option>
 
-                                @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    <option value="Admin">Administrator
+                                    </option>
+                                    <option value="User">Hairdresser / Barber
+                                    </option>
+
+                            </select>
                             </div>
                         </div>
 

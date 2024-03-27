@@ -56,7 +56,12 @@ class SalonController extends Controller
      */
     public function show($id)
     {
-        //
+        $salon = Salon::findOrFail($id);
+        $stocks = \App\Models\Stock::where('salon_id', $salon->id)->get();
+        $users = \App\Models\User::where('salon_id', $salon->id)->get();
+        $appointments = \App\Models\Appointments::where('salon_id', $salon->id)->get();
+        //dd($appointments);
+        return view('salons.show', compact('salon', 'stocks', 'users', 'appointments'));
     }
 
     /**
@@ -90,6 +95,7 @@ class SalonController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $salon = Salon::findOrFail($id);
+        $salon->delete();
+        return redirect(route('salons.index'))->with('status', 'Salon Removed Successfully!');    }
 }

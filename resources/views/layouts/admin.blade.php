@@ -68,7 +68,7 @@
                     <ul class="menu-inner py-1">
                         <!-- Dashboard -->
                         <li class="menu-item active">
-                            <a href="#" class="menu-link" style="color: #7B014C">
+                            <a href="{{url('/admin_dashboard')}}" class="menu-link" style="color: #7B014C">
                                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                                 <div data-i18n="Analytics">Dashboard</div>
                             </a>
@@ -76,7 +76,7 @@
 
 
                         <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span
-                                class="menu-header-text">Salon
+                                class="menu-header-text" style="color: white">Salon
                                 Management</span></li>
                         <!-- Forms -->
                         <li class="menu-item">
@@ -98,7 +98,7 @@
                             </ul>
                         </li>
                         <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span
-                                class="menu-header-text">Stock
+                                class="menu-header-text" style="color: white">Stock
                                 Management</span></li>
                         <!-- Forms -->
                         <li class="menu-item">
@@ -121,8 +121,7 @@
                         </li>
 
                         <!-- Forms & Tables -->
-                        <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span class="menu-header-text">User &amp;
-                                Management</span></li>
+                        <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span class="menu-header-text" style="color: white">User Management</span></li>
                         <!-- Forms -->
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #7B014C">
@@ -143,6 +142,23 @@
                             </ul>
                         </li>
 
+                        <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span class="menu-header-text" style="color: white">Customer Feedback</span></li>
+                    <!-- Forms -->
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #7B014C">
+                            <i class="menu-icon tf-icons bx bx-detail" ></i>
+                            <div data-i18n="Form Elements">Feedback</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('users.index') }}" class="menu-link" style="color: #7B014C">
+                                    <div data-i18n="All users">All</div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     </ul>
                 </aside>
                 <!-- / Menu -->
@@ -156,7 +172,13 @@
                                 <i class="bx bx-menu bx-sm"></i>
                             </a>
                         </div>
-
+                        <div class="navbar-nav-left d-flex align-items-center">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="{{ route('login') }}" style="color: white">{{ __('Administration') }}</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
                             <ul class="navbar-nav ms-auto">
@@ -164,20 +186,15 @@
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link" href="{{ route('login') }}" style="color: white">{{ __('Login') }}</a>
                                         </li>
                                     @endif
 
-                                    @if (Route::has('register'))
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li>
-                                    @endif
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#"
                                             role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" v-pre>
+                                            aria-expanded="false" v-pre style="color: white">
                                             {{ Auth::user()->name }}
                                         </a>
 

@@ -159,6 +159,22 @@
                         </ul>
                     </li>
 
+                    <li class="menu-header small text-uppercase" style="background-color: #7B014C"><span class="menu-header-text" style="color: white">Slots</span></li>
+                    <!-- Forms -->
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle" style="color: #7B014C">
+                            <i class="menu-icon tf-icons bx bx-detail" ></i>
+                            <div data-i18n="Form Elements">Slots</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('slots.index') }}" class="menu-link" style="color: #7B014C">
+                                    <div data-i18n="All slots">All</div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
                     </ul>
                 </aside>
                 <!-- / Menu -->

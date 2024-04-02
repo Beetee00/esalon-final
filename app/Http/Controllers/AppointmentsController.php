@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointments;
 use App\Models\Salon;
+use App\Models\Slot;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,7 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+        $slot_time = Slot::where('time', $request->get('time'))->pluck('status');
         $request->validate([
             'name' => 'required',
             'surname' => 'required',
@@ -79,10 +81,11 @@ class AppointmentsController extends Controller
         } else {
 
         }
-       // dd($appointment);
-
+       dd($slot_time);
+       $slot_time = 'Occupied';
         $appointment->save();
-        return redirect('/')->with('status', 'Appointment submitted successfully!');
+
+        return redirect('/')->with('success',"Appointment Saved Successfully");
     }
 
     /**

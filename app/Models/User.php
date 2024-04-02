@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'role',
         'email',
+        'profile_image',
         'salon_id',
         'password',
     ];

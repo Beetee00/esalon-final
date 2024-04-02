@@ -34,4 +34,8 @@ class Salon extends Model
     {
         return $this->hasMany(StockRequest::class);
     }
+    public function feedbacks(): HasMany
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }

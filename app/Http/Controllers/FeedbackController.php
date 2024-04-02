@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointments;
-use App\Models\User;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        //
     }
 
     /**
@@ -27,8 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $salons = \App\Models\Salon::all();
-        return view('users.create', compact('salons'));
+        //
     }
 
     /**
@@ -39,37 +35,42 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-           // $users = User::first();
-           $request->validate([
+        $request->validate([
             'name' => 'required',
-            'email' => '',
-            'role' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'date' => 'required',
             'salon_id' => 'required',
-            'password' => 'required',
-            'profile_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
+            'user_id' => 'required',
+            'rated' => 'required',
+            'message' => 'required',
+            'customer_image' => '|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-
-        // $store = $request->all();
-        $pass =  Hash::make($request->get('password'));
-        $client = new User([
+        //dd($request);
+        $appointment = new Feedback([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'role' => $request->get('role'),
+            'phone_number' => $request->get('phone_number'),
+            'date' => $request->get('date'),
+            'rated' => $request->get('rated'),
+            'message' => $request->get('message'),
             'salon_id' => $request->get('salon_id'),
-            'password' => $pass,
+            'user_id' => $request->get('user_id'),
         ]);
-        if ($request->hasFile('profile_image')) {
+        //
+        if ($request->hasFile('customer_image')) {
             $destination_path = public_path('images/uploads');
-            $image3 = $request->file('profile_image');
+            $image3 = $request->file('customer_image');
             $image_name3 = $image3->getClientOriginalName();
             $image3->move($destination_path, $image_name3);
-            $appointment['profile_image'] = $image_name3;
+            $appointment['customer_image'] = $image_name3;
         } else {
 
         }
-        //dd($client);
-        $client->save();
-        return redirect(route('users.index'))->with('status', 'User Added Successfully!');
+       // dd($appointment);
+
+        $appointment->save();
+        return redirect('/')->with('success', 'Feedback submitted successfully!');
     }
 
     /**
@@ -80,9 +81,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrfail($id);
-        $appointments = Appointments::where('user_id', $id)->paginate(3);
-        return view('users.show', compact('user', 'appointments'));
+        //
     }
 
     /**

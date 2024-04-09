@@ -468,9 +468,43 @@
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center">
-            @foreach ($feedbacks as $feedback)
-                <div class="col-md-4 style-3">
+
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    @foreach ($feedbacks as $feedback)
+                    <div class="col-md-4">
+                        <span class="badge text-white"
+                            style="background-color:#7B014C">{{ $feedback->salon->name }}</span>
+                            <span class="badge text-white justify-content-center">
+                                @if ($feedback->rated > 3)
+                                    <span class="badge text-white" style="background-color:#679f45"> Happy</span>
+                                @elseif($feedback->rated < 3)
+                                    <span class="badge text-white" style="background-color:#c16736"> Not Happy</span>
+                                @else
+                                    <span class="badge text-white" style="background-color:#51ee1d"> Very
+                                        Happy</span>
+                                @endif
+                            </span>
+                           <div class="body p-5" style="height: 250px !important; width : 300px !important; background-color: #fefaff">
+                            <div class="tour-text color-grey-3 text-center">
+                                &ldquo;{{ $feedback->message }}&rdquo;</div>
+                            <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
+                                    src="/images/uploads/{{ $feedback->customer_image }}" alt=""
+                                    class="img-rounded img-fluid" style="width: 20%;
+                                    height: 20%;
+                                    border-radius: 50%;"></div>
+                            <div class="link-name d-flex justify-content-center">{{ $feedback->name }}
+                            </div>
+                            <div class="link-position d-flex justify-content-center">Client</div>
+                           </div>
+                    </div>
+                    @endforeach
+                    {{ $feedbacks->links() }}
+                </div>
+
+            </div>
+                {{-- <div class="col-md-4 style-3">
 
                     <span class="badge text-white"
                         style="background-color:#7B014C">{{ $feedback->salon->name }}</span>
@@ -484,14 +518,14 @@
                                 Happy</span>
                         @endif
                     </span>
-                    <div class="tour-item p-3 ">
-                        <div class="tour-desc p-3" style="background-color: #C294B7">
+                    <div class=" p-5 " >
+                        <div class=" p-3" style="background-color: #fefaff">
                             <div class="tour-text color-grey-3 text-center">
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
                                     src="/images/uploads/{{ $feedback->customer_image }}" alt=""
-                                    class="img-rounded img-fluid" style="width: 40%;
-                                    height: 40%;
+                                    class="img-rounded img-fluid" style="width: 20%;
+                                    height: 20%;
                                     border-radius: 50%;"></div>
                             <div class="link-name d-flex justify-content-center">{{ $feedback->name }}
                             </div>
@@ -500,13 +534,14 @@
                         </div>
                     </div>
 
-                </div>
-            @endforeach
-            {{ $feedbacks->links() }}
+                </div> --}}
 
-        </div>
+
+
 
     </div>
+
+
 
     <div class="container mt-5">
         <div class="row justify-content-center">

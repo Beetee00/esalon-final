@@ -284,6 +284,11 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                
+                                <a class="dropdown-item" href="{{ url('/admin_dashboard') }}"
+                                >
+                                 {{ __('My dashboard') }}
+                             </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -441,7 +446,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container" id="about">
         <div class="row d-flex justify-content-center ">
            <div class="col-md-12 text-center mt-4">
             <h2 style="color: #7B014C" >About Us</h2>

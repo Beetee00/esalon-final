@@ -185,7 +185,7 @@
                                             <select name="time" class="form-control form-control-line" required>
                                                 <option selected style="display:none">Select available slot</option>
                                                 @foreach ($available_slots as $slot)
-                                                    <option value="{{  $slot->time }}">{{ $slot->time }}
+                                                    <option value="{{ $slot->time }}">{{ $slot->time }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -284,12 +284,15 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                
-                                <a class="dropdown-item" href="{{ url('/admin_dashboard') }}"
-                                >
-                                 {{ __('My dashboard') }}
-                             </a>
-
+                                @if (Auth::user()->role == 'Admin')
+                                    <a class="dropdown-item" href="{{ url('/admin_dashboard') }}">
+                                        {{ __('My dashboard') }}
+                                    </a>
+                                @else
+                                    <a class="dropdown-item" href="{{ url('/general_dashboard') }}">
+                                        {{ __('My dashboard') }}
+                                    </a>
+                                @endif
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -418,18 +421,18 @@
 
             <div class="carousel-inner mt-3">
                 <div class="carousel-item active">
-                    <img src="{{ asset('admin/assets/img/bg01.jpg') }}" class="d-block w-100 img-fluid" alt="..."
-                        >
+                    <img src="{{ asset('admin/assets/img/bg01.jpg') }}" class="d-block w-100 img-fluid"
+                        alt="...">
 
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('admin/assets/img/bg02.jpg') }}" class="d-block w-100 img-fluid" alt="..."
-                        >
+                    <img src="{{ asset('admin/assets/img/bg02.jpg') }}" class="d-block w-100 img-fluid"
+                        alt="...">
 
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('admin/assets/img/bg03.jpg') }}" class="d-block w-100 img-fluid" alt="..."
-                        >
+                    <img src="{{ asset('admin/assets/img/bg03.jpg') }}" class="d-block w-100 img-fluid"
+                        alt="...">
 
                 </div>
             </div>
@@ -448,20 +451,20 @@
 
     <div class="container" id="about">
         <div class="row d-flex justify-content-center ">
-           <div class="col-md-12 text-center mt-4">
-            <h2 style="color: #7B014C" >About Us</h2>
-                    <p class="text-muted text-center p-5" style="font-size: 20px">Welcome to our online
-                        booking system at Alvion Salon. Experience convenience and luxury as you schedule your salon
-                        services with ease. Browse our menu, choose your preferred treatment, and select a date
-                        and time that suits you best. Say goodbye to long waiting times and hello to a seamless
-                        salon experience. Book now and indulge in a personalized journey of beauty and
-                        rejuvenation. We can't wait to welcome you!</p>
-           </div>
-            <div class="col-md-12 text-center mb-5">
-                <h3 style="color: #7B014C" >Testimonials</h3>
+            <div class="col-md-12 text-center mt-4">
+                <h2 style="color: #7B014C">About Us</h2>
+                <p class="text-muted text-center p-5" style="font-size: 20px">Welcome to our online
+                    booking system at Alvion Salon. Experience convenience and luxury as you schedule your salon
+                    services with ease. Browse our menu, choose your preferred treatment, and select a date
+                    and time that suits you best. Say goodbye to long waiting times and hello to a seamless
+                    salon experience. Book now and indulge in a personalized journey of beauty and
+                    rejuvenation. We can't wait to welcome you!</p>
             </div>
             <div class="col-md-12 text-center mb-5">
-                <h2 style="color: #7B014C" >Explore the customers experience from our salon range</h2>
+                <h3 style="color: #7B014C">Testimonials</h3>
+            </div>
+            <div class="col-md-12 text-center mb-5">
+                <h2 style="color: #7B014C">Explore the customers experience from our salon range</h2>
             </div>
         </div>
 
@@ -471,7 +474,7 @@
 
                     <span class="badge text-white"
                         style="background-color:#7B014C">{{ $feedback->salon->name }}</span>
-                        <span class="badge text-white">
+                    <span class="badge text-white">
                         @if ($feedback->rated > 3)
                             <span class="badge text-white" style="background-color:#679f45"> Happy</span>
                         @elseif($feedback->rated < 3)
@@ -479,15 +482,17 @@
                         @else
                             <span class="badge text-white" style="background-color:#51ee1d"> Very
                                 Happy</span>
-                        @endif</span>
+                        @endif
+                    </span>
                     <div class="tour-item p-3 ">
-                        <div class="tour-desc p-3" style="background-color: #D9D9D9">
+                        <div class="tour-desc p-3" style="background-color: #d7aae3">
                             <div class="tour-text color-grey-3 text-center">
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
-                            <div class="d-flex justify-content-center pt-2 pb-2"><img
-                                    class="tm-people"
-                                    src="/images/uploads/{{ $feedback->customer_image }}"
-                                    alt="" class="img-rounded img-fluid"></div>
+                            <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
+                                    src="/images/uploads/{{ $feedback->customer_image }}" alt=""
+                                    class="img-rounded img-fluid" style="width: 40%;
+                                    height: 40%;
+                                    border-radius: 50%;"></div>
                             <div class="link-name d-flex justify-content-center">{{ $feedback->name }}
                             </div>
                             <div class="link-position d-flex justify-content-center">Client</div>
@@ -507,25 +512,29 @@
         <div class="row justify-content-center">
             <div class="col-md-12 p-3 text-center">
                 <h2 class="text-muted">Alvion Advertisements and Promotions</h2>
-                <p class="text-muted text-center p-5" style="font-size: 20px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis asperiores ipsa nam, molestias cupiditate quis eos nemo tenetur numquam blanditiis natus. Consequatur veritatis, ratione placeat impedit distinctio deleniti dolores non?</p>
-                <p class="text-muted text-center pl-5 pr-5" style="font-size: 20px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit excepturi dignissimos velit quod explicabo! Sunt dolor quasi doloremque et nesciunt ducimus sed quam aut voluptas, debitis autem alias, aperiam perferendis?</p>
+                <p class="text-muted text-center p-5" style="font-size: 20px">Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Reiciendis asperiores ipsa nam, molestias cupiditate quis eos nemo tenetur numquam
+                    blanditiis natus. Consequatur veritatis, ratione placeat impedit distinctio deleniti dolores non?
+                </p>
+                <p class="text-muted text-center pl-5 pr-5" style="font-size: 20px">Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Odit excepturi dignissimos velit quod explicabo! Sunt dolor quasi
+                    doloremque et nesciunt ducimus sed quam aut voluptas, debitis autem alias, aperiam perferendis?</p>
 
             </div>
         </div>
     </div>
 
-    <div class="container pb-1 mt-5"
-        style="height: 400; background-color : #7B014C;" id="contact">
+    <div class="container pb-1 mt-5" style="height: 400; background-color : #7B014C;" id="contact">
         <div class="row mt-3 justify-content-start mb-5">
             <div class="col-md-6 pl-5">
                 <h4 class="pt-5 pl-5 fw-bold " style="color: #D9D9D9; ">Physical Address</h4>
-                <p class="pt-5 text-light" >
+                <p class="pt-5 text-light">
                     17138 Unit "M"
                 </p>
-                <p class=" text-light" >
+                <p class=" text-light">
                     Seke
                 </p>
-                <p class=" text-light" >
+                <p class=" text-light">
                     Chitungwiza
                 </p>
             </div>

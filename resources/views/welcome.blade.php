@@ -485,7 +485,7 @@
                         @endif
                     </span>
                     <div class="tour-item p-3 ">
-                        <div class="tour-desc p-3" style="background-color: #d7aae3">
+                        <div class="tour-desc p-3" style="background-color: #C294B7">
                             <div class="tour-text color-grey-3 text-center">
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"

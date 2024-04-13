@@ -486,13 +486,10 @@
                                         Happy</span>
                                 @endif
                             </span>
-<<<<<<< HEAD
-                           <div class="body p-5 text-center" style="height: 250px !important; width : 300px !important; background-color: #fefaff">
-                            <div class="tour-text color-grey-3 text-center">
-=======
+
                            <div class="body p-5" style="height: 270px !important; width : 300px !important; background-color: #DAD0DB">
                             <div class="tour-text text-dark text-center">
->>>>>>> 79e9ace41aacae280f956a8682b263f6112dad2c
+
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
                                     src="/images/uploads/{{ $feedback->customer_image }}" alt=""

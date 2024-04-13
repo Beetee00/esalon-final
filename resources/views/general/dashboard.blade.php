@@ -132,6 +132,7 @@
                                     <th>Name</th>
                                     <th>Customer Image</th>
                                     <th>Message</th>
+                                    <th>Rated</th>
 
 
 
@@ -145,6 +146,7 @@
                                         <td ><img src="/images/uploads/{{ $feedbacks->customer_image }}" alt=""
                                             srcset="" style="width:50px;height:50px"></td>
                                             <td class="text-muted">{{ $feedbacks->message }}</td>
+                                            <td class="text-muted">{{ $feedbacks->rated }}</td>
 
 
                                     </tr>

@@ -20,7 +20,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-
+                                <th>Rated (out of 5)</th>
                                 <th>Customer Name</th>
                                 <th>Message</th>
                                 <th>Phone Number</th>
@@ -33,6 +33,7 @@
                         <tbody class="table-border-bottom-0">
                             @foreach ($feedbacks as $feedback)
                                 <tr id="row_{{ $feedback->id }}">
+                                    <td class="text-muted">{{ $feedback->rated }}</td>
 
                                     <td class="text-muted">{{ $feedback->name }}</td>
                                     <td class="text-muted">{{ $feedback->message }}</td>

@@ -81,7 +81,11 @@ class AppointmentsController extends Controller
         } else {
 
         }
+<<<<<<< HEAD
        //dd($slot_time);
+=======
+       // dd($slot_time);
+>>>>>>> 79e9ace41aacae280f956a8682b263f6112dad2c
        $slot_time = 'Occupied';
         $appointment->save();
 

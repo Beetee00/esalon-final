@@ -486,17 +486,22 @@
                                         Happy</span>
                                 @endif
                             </span>
+<<<<<<< HEAD
                            <div class="body p-5 text-center" style="height: 250px !important; width : 300px !important; background-color: #fefaff">
                             <div class="tour-text color-grey-3 text-center">
+=======
+                           <div class="body p-5" style="height: 270px !important; width : 300px !important; background-color: #DAD0DB">
+                            <div class="tour-text text-dark text-center">
+>>>>>>> 79e9ace41aacae280f956a8682b263f6112dad2c
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
                                     src="/images/uploads/{{ $feedback->customer_image }}" alt=""
                                     class="img-rounded img-fluid" style="width: 20%;
                                     height: 20%;
                                     border-radius: 50%;"></div>
-                            <div class="link-name d-flex justify-content-center">{{ $feedback->name }}
+                            <div class="link-name d-flex justify-content-center" style = "color:#7B014C">{{ $feedback->name }}
                             </div>
-                            <div class="link-position d-flex justify-content-center">Client</div>
+                            <div class="link-position d-flex justify-content-center"style = "color:#7B014C">Client</div>
                            </div>
                     </div>
                     @endforeach
@@ -519,7 +524,7 @@
                         @endif
                     </span>
                     <div class=" p-5 " >
-                        <div class=" p-3" style="background-color: #fefaff">
+                        <div class=" p-3" style="background-color: #fefaff,">
                             <div class="tour-text color-grey-3 text-center">
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"

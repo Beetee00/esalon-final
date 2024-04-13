@@ -97,5 +97,6 @@ class SalonController extends Controller
     {
         $salon = Salon::findOrFail($id);
         $salon->delete();
-        return redirect(route('salons.index'))->with('status', 'Salon Removed Successfully!');    }
+        return redirect(route('salons.index'))->with('status', 'Salon Removed Successfully!');
+      }
 }

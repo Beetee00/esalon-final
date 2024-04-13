@@ -2,6 +2,16 @@
 @section('content')
     <!-- Content wrapper -->
     <div class="content-wrapper">
+        @if (session('status'))
+        <div class="justify-content-right alert alert-success" role="alert">
+            {{ session('status') }}
+            <script>
+                setTimeout(function() {
+                    location.href = "/users";
+                }, 3000);
+            </script>
+        </div>
+    @endif
         <!-- Content -->
         <div class="container flex-grow-1 container-p-y">
 

@@ -98,6 +98,8 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stock = Stock::findOrFail($id);
+        $stock->delete();
+        return redirect(route('stocks.index'))->with('status', 'Stock Removed Successfully!');
     }
 }

@@ -236,7 +236,7 @@
                                             <label for="style_image" class="form-label">Style Image
                                             </label>
                                             <div class="custom-file">
-                                                <input type="file" class="form-control" name="style_image">
+                                                <input type="file" class="form-control" name="style_image" required>
                                             </div>
                                         </div>
                                     </div>
@@ -470,10 +470,10 @@
 
 
 
-            <div class="container">
+            <div class="container justify-content-center">
                 <div class="row justify-content-center">
                     @foreach ($feedbacks as $feedback)
-                    <div class="col-md-4">
+                    <div class="col-md-4 text-center">
                         <span class="badge text-white"
                             style="background-color:#7B014C">{{ $feedback->salon->name }}</span>
                             <span class="badge text-white justify-content-center">
@@ -486,7 +486,7 @@
                                         Happy</span>
                                 @endif
                             </span>
-                           <div class="body p-5" style="height: 250px !important; width : 300px !important; background-color: #fefaff">
+                           <div class="body p-5 text-center" style="height: 250px !important; width : 300px !important; background-color: #fefaff">
                             <div class="tour-text color-grey-3 text-center">
                                 &ldquo;{{ $feedback->message }}&rdquo;</div>
                             <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"

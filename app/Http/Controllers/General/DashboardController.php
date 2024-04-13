@@ -4,6 +4,7 @@ namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointments;
+use App\Models\Feedback;
 use App\Models\Salon;
 use App\Models\StockRequest;
 use App\Models\User;
@@ -20,6 +21,7 @@ class DashboardController extends Controller
         $user = User::findOrFail($user_id);
         $salons = Salon::all();
         $my_requests = StockRequest::where('user', $user_name)->count();
-        return view('general.dashboard', compact('appointments', 'salons', 'user', 'my_requests', 'my_appointments'));
+        $feedbacks = Feedback::where("user_id", $user_id)->get();
+        return view('general.dashboard', compact('appointments', 'salons', 'user', 'my_requests', 'my_appointments', 'feedbacks'));
       }
 }

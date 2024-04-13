@@ -81,35 +81,7 @@
                                         <td><img src="/images/uploads/{{ $appointments->style_image }}" alt=""
                                                 srcset="" style="width:50px;height:50px"></td>
                                         <td>
-                                            {{-- <td>
-                                            <div class="row">
-                                             <div class="col-md-4">
-                                                <a href="{{route('stock_requests.create')}}">
-                                                    <p><span class="text-warning">Request  |
-                                                    </p>
-                                                </a>
-                                             </div>
-                                             <div class="col-md-4">
-                                                <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20Click%20this%20Link%20to%20make%20a%20payment%20https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPW5nb25pZHphc2hlbnlhY2hvdG8lNDBnbWFpbC5jb20mYW1vdW50PTQwMDAwLjAwJnJlZmVyZW5jZT0mbD0x">
-                                                    <p><span class="text-success">Accept  |
-                                                    </p>
-                                                </a>
-                                             </div>
-                                             <div class="col-md-4">
 
-                                            <a href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20declined.%20Please%20contact%20Alvion%20on%20+263780854288%20.%20Thank%20you."
-                                                target="_blank">
-                                                <p><span class="text-danger">Decline
-                                                </p>
-                                            </a>
-                                             </div>
-                                            </div>
-
-
-
-
-
-                                        </td> --}}
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -142,6 +114,39 @@
                                                 </div>
                                             </div>
                                         </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="card h-100">
+                    <h5 class="card-header">Customer Feedbacks</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Customer Image</th>
+                                    <th>Message</th>
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody >
+                                @foreach ($feedbacks as $feedbacks)
+                                    <tr id="row_{{ $feedbacks->id }}">
+                                        <td class="text-muted">{{ $feedbacks->id }}</td>
+                                        <td class="text-muted">{{ $feedbacks->name }}</td>
+                                        <td ><img src="/images/uploads/{{ $feedbacks->customer_image }}" alt=""
+                                            srcset="" style="width:50px;height:50px"></td>
+                                            <td class="text-muted">{{ $feedbacks->message }}</td>
+
+
                                     </tr>
                                 @endforeach
                             </tbody>

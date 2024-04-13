@@ -14,7 +14,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $feedbacks = Feedback::all();
+        //dd($feedbacks);
+        return view("feedbacks.index", compact('feedbacks'));
     }
 
     /**
@@ -68,7 +70,6 @@ class FeedbackController extends Controller
 
         }
        // dd($appointment);
-
         $appointment->save();
         return redirect('/')->with('success', 'Feedback submitted successfully!');
     }
@@ -115,6 +116,8 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feedback = Feedback::findOrFail($id);
+        $feedback->delete();
+        return redirect(route('feedbacks.index'))->with('status', 'Feedback Removed Successfully!');
     }
 }

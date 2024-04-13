@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -43,7 +42,6 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin/assets/js/config.js') }}"></script>
 </head>
-
 <body style="background-color: #fff">
     <div id="app">
         <!-- Layout wrapper -->
@@ -56,7 +54,6 @@
                             <img src="{{ asset('assets/img/logo.png') }}" alt="" srcset="" class="logo"
                                 height="60">
                         </a>
-
                         <a href="javascript:void(0);"
                             class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                             <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -151,7 +148,7 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('users.index') }}" class="menu-link" style="color: #7B014C">
+                                <a href="{{ route('feedbacks.index') }}" class="menu-link" style="color: #7B014C">
                                     <div data-i18n="All users">All</div>
                                 </a>
                             </li>
@@ -218,9 +215,9 @@
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
-                                                {{ __('Logoutt') }}
+                                                {{ __('Logout') }}
                                             </a>
-                                           
+
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                 class="d-none">
@@ -232,15 +229,11 @@
                             </ul>
                         </div>
                     </nav>
-
                     <!-- / Navbar -->
-
                     <main class="py-4">
                         @yield('content')
                     </main>
-
                     <!-- / Footer -->
-
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!-- Content wrapper -->
@@ -252,25 +245,17 @@
     </div>
     <!-- / Layout wrapper -->
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/js/bootstrap.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-
     <script src="{{ asset('admin/assets/vendor/js/menu.js') }}"></script>
-    <!-- endbuild -->
-
     <!-- Vendors JS -->
     <script src="{{ asset('admin/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-
     <!-- Main JS -->
     <script src="{{ asset('admin/assets/js/main.js') }}"></script>
-
     <!-- Page JS -->
     <script src="{{ asset('admin/assets/js/dashboards-analytics.js') }}"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
-
 </html>

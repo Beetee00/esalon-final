@@ -17,7 +17,10 @@ class StockRequestsController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::user()->name;
+       // dd($id);
+        $stock_requests = StockRequest::where("user", $id)->get();
+        return view('stock_requests.index', compact('stock_requests'));
     }
 
     /**

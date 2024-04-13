@@ -6,8 +6,8 @@
             <div class="col-lg-4 col-xlg-3 col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <center class="m-t-30"> <img src="{{ asset('admin/assets/img/logo.PNG')}}" class="rounded-circle"
-                                width="120" />
+                        <center class="m-t-30"> <img src="{{ asset('admin/assets/img/bg03.jpg')}}" class="rounded-circle"
+                                width="120" height="120" />
                             <h4 class="card-title mt-4">{{ $user->name }}</h4>
                             <div class="row text-center justify-content-md-center">
                             </div>
@@ -24,7 +24,7 @@
             <div class="col-lg-8 col-xlg-9 col-md-7">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-body"> <small class="text-muted">Salon </small>
+                        <div class="card-body"> <small class="text-muted fw-bolder">Stationed At </small>
                             <h6>{{ $user->salon->name}}</h6>
                         </div>
 

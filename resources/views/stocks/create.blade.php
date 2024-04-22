@@ -40,7 +40,7 @@
                             <label for="units" class="col-md-4 col-form-label text-md-start">{{ __('Units') }}</label>
 
                             <div class="col-md-8">
-                                <input id="units" type="text" class="form-control @error('units') is-invalid @enderror" name="units" value="{{ old('units') }}" required autocomplete="name" autofocus>
+                                <input id="units" type="number" class="form-control @error('units') is-invalid @enderror" name="units" value="{{ old('units') }}" required autocomplete="name" autofocus>
 
                                 @error('units')
                                     <span class="invalid-feedback" units="alert">

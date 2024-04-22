@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Salon;
 use App\Models\StockRequest;
+use App\Models\Stock;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,19 +50,34 @@ class StockRequestsController extends Controller
             'date' => 'required',
             'salon_id' => 'required',
             'user' => 'required',
+            'units' => 'required',
             'stock_id' => 'required'
 
         ]);
         //dd($request);
-        $request_stock = new StockRequest([
 
+        $stock_val = $request->get('stock_id');
+        $getStock = Stock::where('id', $stock_val)->get();
+
+        $stck = intval($stock_val);
+        $request_stock = new StockRequest([
             'date' => $request->get('date'),
+            'units' => $request->get('units'),
             'salon_id' => $request->get('salon_id'),
             'user' => $request->get('user'),
             'stock_id' => $request->get('stock_id')
         ]);
-       //dd($request_stock);
-        $request_stock->save();
+        $req_units = $request->get('units');
+
+       $int_reqs = intval($req_units);
+       //$total_units = intval($getStock);
+       $new_units = $getStock[0]->units - $int_reqs;
+       $new_stock_value = $getStock[0]->units;
+       dd($getStock);
+       // $request_stock->save();
+       $new_stock_value=$new_units;
+       $getStock->save();
+
         return redirect('/general_dashboard')->with('status', 'Stock request submitted successfully!');
     }
 

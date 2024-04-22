@@ -77,7 +77,7 @@
                                                 href="{{route('stock_requests.create')}}"><i
                                                     class="bx bx-edit-alt me-1"></i> Request Stock</a>
                                                     <a class="dropdown-item"
-                                                    href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20Click%20this%20Link%20to%20make%20a%20payment%20https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPW5nb25pZHphc2hlbnlhY2hvdG8lNDBnbWFpbC5jb20mYW1vdW50PTQwMDAwLjAwJnJlZmVyZW5jZT0mbD0x"><i
+                                                    href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20approved.%20Click%20this%20Link%20to%20make%20a%20payment%20https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPXRhdGVuZGFtYXJ5bWFyZXlhJTQwZ21haWwuY29tJmFtb3VudD0zMC4wMCZyZWZlcmVuY2U9Jmw9MA%3d%3d"><i
                                                         class="bx bx-edit-alt me-1"></i> Accept Appointment</a>
                                                         <a class="dropdown-item"
                                                         href="https://wa.me/{{ $appointments->phone_number }}?text=Hi, %20{{ $appointments->name }}%20your%20appointment%20at%20{{$appointments->salon->name}}%20with%20{{$appointments->user->name}}%20has%20been%20declined.%20Please%20contact%20Alvion%20on%20+263780854288%20.%20Thank%20you."><i

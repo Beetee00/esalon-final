@@ -19,8 +19,9 @@ class DashboardController extends Controller
         $users = User::all()->count();
         $stock = Stock::all()->count();
         $appointments = Appointments::all()->count();
-
-        //dd($stock);
+        $getSalon = User::all();
+        //$user = Salon::with('stocks', 'appointments', 'user', 'stock_requests')->find(1);
+       // dd($user);
         return view('admin.dashboard', compact('stock_requests', 'salons','appointments', 'users', 'stock'));
       }
 }

@@ -13,6 +13,7 @@ class StockRequest extends Model
     protected $fillable = [
         'date',
         'salon_id',
+        'units',
         'user',
         'stock_id'
 

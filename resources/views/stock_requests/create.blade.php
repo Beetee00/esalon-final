@@ -39,6 +39,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row m-1">
+
+                            <div class="col-md-12">
+                                <div class="form-group m-3">
+                                    <input type="number" name="units" placeholder="Units" value=""
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row m-1">
 

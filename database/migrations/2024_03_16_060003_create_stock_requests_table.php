@@ -17,6 +17,7 @@ class CreateStockRequestsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('salon_id');
             $table->unsignedBigInteger('stock_id');
+            $table->integer('units');
             $table->string('date');
             $table->string('user');
             $table->timestamps();
